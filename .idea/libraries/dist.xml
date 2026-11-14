@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="dist">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/network-request-exporter-1.0.2.zip!/" />
+      <root url="jar://$PROJECT_DIR$/dist/network-request-exporter-1.0.2-store.zip!/" />
+      <root url="jar://$PROJECT_DIR$/dist/network-request-exporter-1.0.2-source.zip!/" />
+      <root url="jar://$PROJECT_DIR$/dist/network-request-exporter-1.0.0.zip!/" />
+      <root url="jar://$PROJECT_DIR$/dist/network-request-exporter-1.0.1.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

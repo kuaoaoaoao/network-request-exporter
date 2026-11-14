@@ -1,0 +1,15 @@
+Reviewer test instructions — Network Request Exporter
+
+No login or paid account is required. This is a DevTools extension, not a toolbar popup.
+
+1. Install the extension. If DevTools was already open, close it and reopen it.
+2. Open an ordinary website, open DevTools (F12, or Cmd+Option+I on macOS), then choose the 请求导出 tab. It may be under the » overflow menu.
+3. Reload the page with DevTools open and/or trigger network activity. Completed requests should appear in the panel. Click a URL for headers, payload and response details.
+4. Filter by URL/method/status, select requests with their checkboxes and set 范围 to 已勾选请求. 复制文本 copies readable text. 格式 chooses the 下载文件 format (TXT/JSON/HAR).
+5. Enable 脱敏 for common-field redaction. Raw/free-text data may still contain secrets, so tests should use synthetic data.
+6. Clear records with 清空记录 and generate another request. Switch to the native Network tab and back to confirm capture continues.
+
+Optional local reproducible fixture, using the published GitHub source:
+Run python3 tests/fixture-server.py from the repository root; visit http://127.0.0.1:8765, open DevTools, and click Generate GET / POST / 500. It generates only synthetic local traffic with DEMO_SECRET, including JSON POST and UTF-8 responses. Store upload ZIP contains extension runtime files; fixture is in the source repository.
+
+The extension has no toolbar popup and only runs while DevTools is open. No data is sent to the developer. Console/WebSocket/cURL buttons are clearly disabled reserved controls, not live features. Failed/evicted/oversized response bodies are explicitly labeled. No credentials or access to private websites are needed for review.

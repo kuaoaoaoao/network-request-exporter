@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "请求导出 · Network Exporter",
+  "version": "1.0.2",
+  "description": "在 F12 中批量提取网络请求、请求头、负载及响应正文，复制文本或导出 TXT / JSON / HAR。数据仅在本机处理。",
+  "devtools_page": "devtools.html",
+  "permissions": [
+    "clipboardWrite"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "network-request-exporter",
+  "version": "1.0.2",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "package": "python3 scripts/package.py",
+    "test:store": "python3 tests/store_package_test.py",
+    "assets": "node scripts/store-assets.mjs"
+  },
+  "description": "Export DevTools network requests to readable text, JSON and HAR. Local-first, no runtime dependencies.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,23 @@
+Name
+Network Request Exporter
+
+Summary
+Batch-export DevTools requests, headers, payloads and responses as text, JSON or HAR. Data is processed locally.
+
+Detailed description
+One workflow. Its requests. One export.
+
+Network Request Exporter adds a compact DevTools panel to collect the context of several network requests together. Copy readable text, or download TXT, JSON and HAR.
+
+Features
+• Export URLs, methods, query parameters, headers, payloads, response status, response headers, bodies and timing.
+• Choose all records, filtered results or selected requests.
+• Filter by URL, method, status class and API type.
+• Optionally redact common credential, cookie, JSON and form fields.
+• Keep collecting while another DevTools panel is selected.
+
+The current interface is in Simplified Chinese. Open a normal page, open F12, choose 请求导出 (possibly under »), then reload or perform your workflow. Select a range and copy or download. Close and reopen existing DevTools after installation or updates.
+
+Data is processed in local DevTools memory, not uploaded to the developer. No telemetry, account or backend is used. clipboardWrite is declared only for user-initiated copying. Users control exported files and clipboard contents. Redaction does not guarantee removal of secrets in custom fields or free text; inspect exports before sharing.
+
+Requests before DevTools opened or bodies unavailable to the browser cannot be recovered. At most 2,000 requests, 2 MiB per response body and 32 MiB of total response text are retained, with explicit truncation/unavailability states. Request headers and payloads are outside that body budget. Console, WebSocket and cURL controls are disabled placeholders; those features and unfinished SSE capture are not supported.

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>请求导出</title><link rel="stylesheet" href="panel.css"></head>
+<body>
+<main>
+<div class="toolbar-stack">
+<section class="export-bar" aria-label="导出操作">
+<div class="actions"><button id="copy" class="primary" disabled>复制文本</button><button id="download" disabled>下载文件</button></div>
+<div class="field"><label for="scope">范围</label><select id="scope"><option value="all">全部记录</option><option value="filtered">当前筛选结果</option><option value="selected">已勾选请求</option></select></div>
+<div class="field"><label for="format">格式</label><select id="format"><option value="txt">TXT · 文本</option><option value="json">JSON · 数据</option><option value="har">HAR · 归档</option></select></div>
+<label class="check" title="脱敏常见凭证、JSON 和表单字段；分享前仍需检查自定义字段与自由文本"><input id="redact" type="checkbox">脱敏</label>
+<label class="check"><input id="preserve" type="checkbox" checked>跨页面保留</label>
+<button id="clear" title="清空本插件记录，后续请求继续采集">清空记录</button>
+</section>
+<div class="reserved-bar" role="group" aria-label="预留功能，暂不可用"><span>功能预留</span><button disabled title="预留入口，当前版本暂不支持 Console 采集">Console <small>预留</small></button><button disabled title="预留入口，当前版本暂不支持 WebSocket 消息采集">WebSocket <small>预留</small></button><button disabled title="预留入口，当前版本暂不支持复制 cURL">复制 cURL <small>预留</small></button></div>
+</div>
+<section class="workspace" aria-label="网络请求">
+<div class="filters"><input id="keyword" type="search" placeholder="按请求地址搜索…" aria-label="搜索请求地址"><select id="method" aria-label="请求方法"><option value="">全部方法</option><option>GET</option><option>POST</option><option>PUT</option><option>PATCH</option><option>DELETE</option><option>OPTIONS</option><option>HEAD</option></select><select id="status" aria-label="响应状态"><option value="">全部状态</option><option value="2xx">2xx 成功</option><option value="3xx">3xx 重定向</option><option value="4xx">4xx 客户端错误</option><option value="5xx">5xx 服务端错误</option><option value="failed">请求失败 / 状态未知</option></select><select id="type" aria-label="请求类型"><option value="">全部类型</option><option value="api">接口 Fetch / XHR / JSON</option></select></div>
+<div class="table-wrap"><table><thead><tr><th class="selection"><input id="select-visible" type="checkbox" aria-label="勾选当前筛选结果"></th><th>方法</th><th class="url-column">请求地址</th><th>状态</th><th>耗时</th><th>响应正文</th></tr></thead><tbody id="rows"></tbody></table></div>
+<div id="empty"><div class="empty-symbol" aria-hidden="true">↔</div><h3>等待网络请求</h3><p>保持 F12 打开，刷新页面或执行一次业务操作。<br>请求完成后会显示在这里。</p></div>
+<div class="workspace-footer"><h2 class="record-count">请求 <span id="total">0</span></h2><span id="summary">尚未连接采集器</span><span id="export-count">导出 0 条</span></div>
+</section>
+<section id="detail" hidden><div class="detail-title"><h2>请求详情</h2><button id="close-detail" class="quiet">收起详情</button></div><pre id="detail-content"></pre></section>
+<p id="notice" role="status" aria-live="polite">先打开 F12，再刷新页面。打开前的请求及未结束的流式响应可能无法获取。</p>
+<footer class="about"><div class="about-title"><h1>请求导出</h1><span>把一次操作的请求，整理在一起。</span><span class="local-badge">● 仅本机处理</span></div>
+<details class="help"><summary>使用说明与采集限制</summary><p>插件有独立的筛选、勾选和跨页面保留设置，与原生 Network 面板分开。关闭 F12 后记录释放，清空仅清除本插件记录。</p><p>最多保留最近 2000 条；单条正文最多 2 MiB，总正文最多 32 MiB。超限、超时或浏览器未提供正文会明确标记。HAR 中截断正文作为扩展字段预览保存，避免当作完整响应。</p><p>不采集 Console 输入历史、WebSocket 帧或未结束的 SSE。可切换至原生 Network 面板查看这些信息。</p><p class="privacy-note">脱敏覆盖常见凭证、JSON 和表单字段；自定义字段及自由文本请自行检查。原始数据可能包含登录凭证。</p></details>
+</footer>
+</main>
+<dialog id="manual"><h2>手动复制文本</h2><p>浏览器未允许自动写入剪贴板。文本已选中，可按 Ctrl+C / ⌘C 复制，或关闭后下载文件。</p><textarea id="manual-text" readonly aria-label="待复制的导出文本"></textarea><button id="close-manual">关闭</button></dialog>
+<script type="module" src="panel.js"></script>
+</body></html>
